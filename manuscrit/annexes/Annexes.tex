@@ -1,0 +1,21 @@
+\chapter*{Annexes}
+\addcontentsline{toc}{chapter}{Annexes}
+\markboth{\MakeUppercase{Annexes}}{}
+\adjustmtc[2]  % Ajuster les numéros de pages
+\minitoc
+\newpage
+
+\begin{subappendices}
+% Numérotation des sections, sous-sections et figures
+\renewcommand{\setthesection}{\Alph{section}}
+\renewcommand{\setthesubsection}{\Alph{subsection}}
+\renewcommand\thefigure{\thesection.\arabic{figure}}
+\setcounter{figure}{0}  
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+\input{./annexes/A}
+\newpage
+\input{./annexes/B}
+
+\end{subappendices}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}

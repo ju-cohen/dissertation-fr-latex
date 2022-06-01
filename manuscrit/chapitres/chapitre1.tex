@@ -1,0 +1,36 @@
+\chapter{Titre du chapitre 1}
+\label{chap1}
+\begin{justify}
+Résumé du chapitre 1.
+\end{justify}
+\adjustmtc  % ajuste la numérotation
+\minitoc
+\newpage
+
+\section{Titre}
+\lipsum[1-3]
+%
+\\
+\indent Texte avec un renvoi vers le pied de page~\footnote{\url{https://eidolon.univ-lyon2.fr/wiki/index.php/Accueil}}.
+
+\begin{figure}[h]
+\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{chapitre1/Logo}
+		\subcaption[caption]{Logo 1~\footnotemark{}.}  % [caption] nécessaire pour que le \footnotemark{} fonctionne
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{chapitre1/Logo}
+		\subcaption[caption]{Logo 2~\footnotemark{}.}
+	\end{subfigure}
+\caption{Plusieurs footnotes avec url dans des légendes et la galère de les numéroter correctement.}
+\end{figure}
+% url dans une légende : utiliser footenotemark dans la légende + footnotetext après la figure
+% Si plusieurs footnotes : le compteur s'est incrémenté plusieurs fois, il faut l'ajuster manuellement
+\addtocounter{footnote}{-1}  % recule le compteur (qui a avancé avec les marques)
+\footnotetext{footnote associée à la première marque de la figure}  % contenu du footnote
+\stepcounter{footnote}  % avance le compteur de 1
+\footnotetext{marque de la 2e figure: \url{https://eidolon.univ-lyon2.fr/wiki/index.php/Accueil}}  % contenu du footnote

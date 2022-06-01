@@ -1,0 +1,103 @@
+\documentclass[12pt,a4paper,twoside,openright]{report} % default margins: 1.5in
+% twoside + openright : nouveaux chapitres toujours sur la page de droite
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+\usepackage[frenchb]{babel}
+\usepackage{ragged2e}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{./figures/}}  % pour indiquer où trouver les figures
+\usepackage{pifont}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{titlesec}  % formattage des titres
+\usepackage{enumitem}  % personnalisation des listes
+\usepackage[bottom]{footmisc}  % placer les footnotes en bas de page et pas juste après le paragraphe
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.7}
+\pgfplotstableset{col sep=comma}  % pour lire des csv 
+\usetikzlibrary{patterns}
+\usepackage{arydshln}  % pour hachurer des zones dans les éléments tabular et arrays
+\usepackage{multirow}  % pour ajuster le contenu des tableaux
+\usepackage[Algorithme]{algorithm} % entre crochets = le nom qui s'affiche pour identifier l'algo.
+\usepackage{algpseudocode}
+\usepackage[french]{minitoc}  % pour des tables des matières partielles en début de chapitre
+\usepackage{placeins}
+\usepackage[header]{appendix}
+\usepackage{calrsfs}
+\usepackage{fancyhdr}  % pour la gestion des en-têtes et pieds de pages
+\usepackage{eurosym}
+\usepackage{siunitx}  % pour aligner les nombres dans les tableaux (à la virgule, etc.), avec S au lieu de c
+\sisetup{output-decimal-marker = {,}}
+\usepackage{remreset}  % pour avoir des numéros de notes de bas de pages continus, pas réinitialisés à chaque chapitre (avec la ligne suivante)
+\makeatletter\@removefromreset{footnote}{chapter}\makeatother
+
+\usepackage{lipsum}  % pour le template uniquement
+
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}  % doit être le dernier chargé
+
+\pagenumbering{roman}  % pour que les premières pages soient numérotées en chiffres romains
+
+\setcounter{secnumdepth}{4}  % numéroter jusqu'au niveau de profondeur 4
+\setcounter{tocdepth}{1}
+\renewcommand{\theparagraph}{\alph{paragraph})} % numérotation a), b)... pour niveau \paragraph
+\renewcommand{\frenchtablename}{Tableau}  % pour remplacer l'identifiant par défaut "Table"
+
+\newcommand{\xmark}{\ding{55}}  % Opposé du symbole \check
+
+\renewcommand{\algorithmicrequire}{\textbf{Entrées :}}  % Renommage de mots-clés
+\renewcommand{\algorithmicensure}{\textbf{Sorties :}}  % Renommage de mots-clés
+
+\renewcommand{\appendixname}{Annexe}  % Renommage de mots-clés
+\renewcommand{\appendixtocname}{Annexes}  % Renommage de mots-clés
+\renewcommand{\appendixpagename}{Annexes}  % Renommage de mots-clés
+
+\pagestyle{fancy}  % 
+\fancyhf{}
+\fancyhead[LE]{\small \leftmark}  % champ gauche + page paire
+\fancyhead[RO]{\small \rightmark}  % champ droit + page impaire
+\fancyfoot[C]{\thepage}  % pied de page au centre
+
+\renewcommand{\headrulewidth}{1pt}
+
+\begin{document}
+\input{chapitres/titlepage}
+\clearpage
+\thispagestyle{plain}  % remove header rule on blank pages, but not page number
+
+\dominitoc  % Initialisation des minitoc
+
+\input{./chapitres/remerciements}
+\input{./chapitres/abstract}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}  % Débute la numérotation normale des pages
+\setcounter{page}{1}
+\setcounter{section}{1}
+
+\input{./chapitres/introduction}
+
+\clearpage
+\input{./chapitres/chapitre1}
+
+\clearpage
+\input{./chapitres/conclusion}
+
+\input{./annexes/Annexes}
+
+\bibliographystyle{plainnat-fr}
+\bibliography{references}
+\addcontentsline{toc}{chapter}{Références}  % ajouter les références dans la table des matières
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Table des figures}
+\listoftables
+\addcontentsline{toc}{chapter}{Liste des tableaux}
+
+\end{document}
